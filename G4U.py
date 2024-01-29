@@ -2,7 +2,6 @@ import scipy.io as sio
 import numpy as np                         
 import matplotlib.pyplot as plt
 from yaml import DirectiveToken           
-import function_wmmse_powercontrol as wf
 import torch
 import torch.nn as nn
 from torch.autograd import Variable
@@ -13,7 +12,6 @@ import torch.nn.functional as F
 from torch_geometric.nn.conv import MessagePassing
 from torch.nn import Sequential as Seq, Linear as Lin, ReLU, Tanh, Sigmoid, BatchNorm1d as BN
 import wireless_networks_generator as wg
-from FPLinQ import FP_optimize, FP
 import helper_functions
 import time
 
