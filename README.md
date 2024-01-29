@@ -4,7 +4,7 @@ This repository contains our work<br />
 **For any reproduce, further research or development, please kindly cite our paper**<br />
 @ARTICLE{G4U,<br />
   author={Gu, Yifan and She, Changyang and Bi, Suzhi and Quan, Zhi and Vucetic, Branka},<br />
-  journal={IEEE Transactions on Wireless Communications}, 
+  journal={IEEE Transactions on Wireless Communications},<br /> 
   title={Graph Neural Network for Distributed Beamforming and Power Control in Massive URLLC Networks},<br /> 
   year={2024},<br />
   volume={},<br />
