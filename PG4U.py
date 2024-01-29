@@ -2,7 +2,6 @@ import scipy.io as sio
 import numpy as np                         
 import matplotlib.pyplot as plt
 from yaml import DirectiveToken           
-import function_wmmse_powercontrol as wf
 import torch
 import torch.nn as nn
 from torch.autograd import Variable
@@ -13,7 +12,6 @@ import torch.nn.functional as F
 from torch_geometric.nn.conv import MessagePassing
 from torch.nn import Sequential as Seq, Linear as Lin, ReLU, Sigmoid, Tanh, BatchNorm1d as BN
 import wireless_networks_generator as wg
-from FPLinQ import FP_optimize, FP
 import helper_functions
 import time
 
@@ -221,7 +219,7 @@ class PG4U(torch.nn.Module):
 def loss_function(data, out, K):
     loss0 = 0
     for i in range(frames-1):
-        # In PG4U, the output data beamformer in the current frame will be used in the next frame in PG4U
+        # In PG4U, the output data beamformer in the current frame will be used in the next frame
         H1 = data.y[:,i+1,:,:,:Nt]
         H2 = data.y[:,i+1,:,:,Nt:]
         p1 = out[i,:,:Nt]
@@ -260,7 +258,7 @@ def loss_and_QoS_evaluation(data, out, K):
     loss = 0
     QoS = 0
     for i in range(frames-1):
-        # In PG4U, the output data beamformer in the current frame will be used in the next frame in PG4U
+        # In PG4U, the output data beamformer in the current frame will be used in the next frame
         H1 = data.y[:,i+1,:,:,:Nt]
         H2 = data.y[:,i+1,:,:,Nt:]
         p1 = out[i,:,:Nt]
@@ -432,7 +430,7 @@ for test_K in gen_tests:
     norm_train_directlink_imag, norm_test_directlink_imag = normalize_directlink_data(train_directlink_csis_imag, test_directlink_csis_imag)
     
     test_data_list = proc_data(test_csis, norm_test_directlink_real,norm_test_directlink_imag, test_K)
-    test_loader = DataLoader(test_data_list, batch_size=test_batchsize, shuffle=False, num_workers=0)
+    test_loader = DataLoader(test_data_list, batch_size=100, shuffle=False, num_workers=0)
     batches = 100
     frames = frame_num
     links = test_K
